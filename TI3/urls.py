@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from TI3.views import * #importamos todo de las views
+from app.views import info
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('inicio/', inicio), #pagina de inicio
+    path('info/', info),
 ]
