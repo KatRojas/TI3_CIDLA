@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +10,7 @@
     <title>Inicio</title>
 </head>
 <body>
+
     <h1>Estamos en la pagina de inicio</h1>
     Nombre del ramo: {{Ramo}}<br><!-- mostramos la variable Ramo-->
     Fecha actual: {{fecha}}<!-- mostramos la variable fecha-->
@@ -27,3 +32,5 @@
     {% endcomment %}
 </body>
 </html>
+
+{% endblock %}
