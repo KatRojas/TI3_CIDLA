@@ -16,14 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from TI3.views import * #importamos todo de las views
-from app.views import info
-from TI3 import views
-from app import views
+from app.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('inicio/', inicio), #pagina de inicio
     path('info/', info),
-    path('add_post/', views.add_post),
+    path('add_post/', add_post),
     #path('read_post_all', views.read_post_all),
 ]
