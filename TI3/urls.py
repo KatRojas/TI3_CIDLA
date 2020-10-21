@@ -1,5 +1,4 @@
 """TI3 URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
 Examples:
@@ -13,4 +12,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.contrib import admin
+from django.urls import path, include
+from TI3.views import * #importamos todo de las views
+from app.views import *
 
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('inicio/', inicio), #pagina de inicio
+    path('info/', info),
+    path('add_post/', add_post),
+    #path('read_post_all', views.read_post_all),
+]
