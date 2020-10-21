@@ -14,13 +14,3 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('inicio/', inicio), #pagina de inicio
-    path('info/', info),
-<<<<<<< HEAD
-=======
-    path('add_post/', views.add_post),
-    #path('read_post_all', views.read_post_all),
->>>>>>> back-end
-]
