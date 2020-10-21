@@ -1,5 +1,5 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} <!-- añadimos el archivo base.html-->
+{% load static %} <!-- cargamos los archivos de la carpeta static-->
 
 {% block content %}
 <!DOCTYPE html>
@@ -11,18 +11,25 @@
 </head>
 <body>
     <h1>Datos</h1>
-    <table>
+    <table border="1px">
         <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
+            <td>Nombre</td>
+            <td>Cantidad</td>
         </tr>
-        {% for sub in Data %}
         <tr>
-            <td>{{ sub.0 }}</td>
-            <td>{{ sub.1 }}</td>
+            <td>Bryan </td>
+            <td>{{cc1}}</td>
         </tr>
-        {% endfor %}
+        <tr>
+            <td>Diego</td>
+            <td>{{cc2}}</td>
+        </tr>
     </table>
+    <!--Datos: {{stringval}}<br> -->
+     <br>
+     <br>
+    Total registros: {{total}} <br>
+    <img src="data:image/png;base64,{{ data }}" alt="" height="250" ,width="250"> <!-- mostramos el grafico con los datos que vienen en la variable "data"-->
     
 </body>
 </html>
