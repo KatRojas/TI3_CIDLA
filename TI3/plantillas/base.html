@@ -1,0 +1,51 @@
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <title>CIDLA DATA SCIENCE</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <div class="navigation-wrap bg-light start-header start-style">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-md navbar-light">
+                
+                    <h2 class="nav-link">CIDLA</h2>	
+                    
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto py-4 py-md-0">
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ">
+                                <a class="nav-link" href="/inicio" role="button" aria-haspopup="true" aria-expanded="false">Inicio</a>
+                            </li>
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                <a class="nav-link" href="/info">info</a>
+                            </li>
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                <a class="nav-link" href="#">Contacto</a>
+                            </li>
+                        </ul>
+                    </div>      
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="my-5 py-5"></div>
+</head>
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'>
+</script><script  src="{% static 'script.js' %}"></script>
+</html>
+
+
+{% block content %}
+
+{% endblock %}
