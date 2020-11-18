@@ -126,7 +126,11 @@ USE_TZ = True
 
 #definimos la carpeta/direccion de los archivos estaticos
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
     BASE_DIR / "static",
     '/var/www/static/',
 ]
+
+MEDIA_ROOT = 'media'
+MEDIA_URL = '/media/'

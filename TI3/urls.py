@@ -1,4 +1,5 @@
 """TI3 URL Configuration
+
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
 Examples:
@@ -16,11 +17,17 @@ from django.contrib import admin
 from django.urls import path, include
 from TI3.views import * #importamos todo de las views
 from app.views import *
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('inicio/', inicio), #pagina de inicio
     path('info/', info),
-    path('add_post/', add_post),
+    path('archivos/', archivos),
+    path('add_post/',add_post),
     #path('read_post_all', views.read_post_all),
 ]
+
+if settings.DEBUG:
+   urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
