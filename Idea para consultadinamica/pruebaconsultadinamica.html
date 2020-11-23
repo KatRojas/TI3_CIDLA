@@ -1,0 +1,43 @@
+<html>
+<head>
+    <script type="text/javascript">
+         var veces = 0 ;
+        function agregar()
+        {
+            const cam = "intex"; 
+            veces++;
+            var o = document.createElement('input');
+            o.type = "text";
+            o.name = cam.concat(' ',veces);
+            o.value = "";
+
+            document.getElementById('padre').appendChild(o);
+        }
+    </script>
+    <script type="text/javascript">
+        function date()
+        {
+         const nom = 'date'; 
+         var cont = 0 ;
+            for (cont; cont < 2; cont++){
+               if(cont <= 2){
+                  var o = document.createElement('input');
+                  o.type = "date";
+                  o.name = nom.concat(' ',cont);
+                  o.value = "";
+                  document.getElementById('padre').appendChild(o);
+                  btn2.disabled=true; 
+               }else{ 
+                  btn2.disabled=true; 
+               }
+        }
+     }
+    </script>
+</head>
+
+<body>
+<div id="padre"></div>
+<input type="button" value="Agregar Campo de Texto" onclick="agregar()">
+<input type="button" id="btn2" value="Agregar Campo de fecha" onclick="date()">
+</body>
+</html> 
