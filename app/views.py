@@ -20,6 +20,7 @@ def info(request):
     data = ''
     dd = ''
     dato_sesiones = []
+    data_personal = []
     SiNo = True
     msj = "Complete todos lo datos Solicitados"
     
@@ -45,7 +46,13 @@ def info(request):
             col = db.archivojson
             cursor = col.find({ 'rut':search })
             for x in cursor:
-                data = x['nombre'] + ' ' + x['apellidos'] 
+                data = x['nombre'] + ' ' + x['apellidos']
+                data_personal.append(x['nombre'])
+                data_personal.append(x['apellidos'])
+                data_personal.append(x['rut'])
+                data_personal.append(x['direccion'])
+                data_personal.append(x['fecha_nacimiento'])
+                data_personal.append(x['ciudad'])
                 for y in range(len(x['sesiones_medica'])):
                     fec = x['sesiones_medica'][y]['fecha']
                     if datetime.strptime(fec,'%d/%m/%Y') >= inicio3 and datetime.strptime(fec,'%d/%m/%Y') <= fin3:
