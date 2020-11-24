@@ -14,6 +14,8 @@ import urllib, base64
 #base64 contiene funciones para traducir datos binarios en un subconjunto de ASCII adecuado para la transmisión utilizando protocolos de texto plano
 
 from .models import Data
+from pymongo import MongoClient
+from datetime import datetime
 
 # Create your views here.
 def info(request):
