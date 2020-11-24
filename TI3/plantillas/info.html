@@ -40,6 +40,44 @@
             </form>
             </div>
             <div class="col-lg-8 col-12">
+            	<div class="card">
+                    
+                    <div class="card-header border-0">
+                        <h3 class="card-title">Datos Personales</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Apellidos</th>
+                                    <th>Rut</th>
+                                    <th>Direccion</th>
+                                    <th>Fecha Nacimiento</th>
+                                    <th>Ciudad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    {%for y in personal%}
+                                    <td>{{y}}</td>
+                                    {%endfor%}
+                                </tr>
+                                
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Apellidos</th>
+                                    <th>Rut</th>
+                                    <th>Direccion</th>
+                                    <th>Fecha Nacimiento</th>
+                                    <th>Ciudad</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
                 <div class="card">
                     
                     <input type="hidden" name="data" id="data" value="{{data}}">
@@ -56,7 +94,7 @@
 
                 <div class="card card-warning">
                     <div class="card-header">
-                        <h3 class="card-title"></h3>
+                        <h3 class="card-title">Datos de las Sesiones</h3>
                     </div>
                     <div class="card-body">
                         <table class="table table-bordered table-striped">
