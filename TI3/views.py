@@ -3,6 +3,7 @@ from pymongo import MongoClient
 from django.shortcuts import render
 from django.core.files.storage import FileSystemStorage
 from django.contrib import messages
+from bson.json_util import loads
 import datetime
 import pandas as pd
 import csv
@@ -83,13 +84,18 @@ class MongoDB(object):
 
     def InsertData2(self, path=None):
 
-        with open(path) as file: 
-            file_data = json.load(file) 
+        with open(path,'r',errors='ignore') as file: 
+            s = file.read()
+            if "$oid" in s:
+                #s = s.replace('\'','\"')
+                s = s.replace("': '", '": "').replace("', '", '", "').replace("{'", '{"').replace("'}", '"}').replace("': \"", '": "').replace("', \"", '", "').replace("\", '", '", "').replace("'", '\\"')
+            data = loads(s)
 
-        if isinstance(file_data, list): 
-            self.collection.insert_many(file_data)   
+        
+        if isinstance(data, list): 
+            self.collection.insert_many(data)   
         else: 
-            self.collection.insert_one(file_data)
+            self.collection.insert_one(data)
 
     def InsertData3(self, path=None):
 
