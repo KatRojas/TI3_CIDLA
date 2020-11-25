@@ -67,7 +67,7 @@ def info(request):
     if SiNo == False:
         return render(request,'info.html',{"msj":msj})
     else:
-        return render(request,'info.html',{"data":data,"dato_fecha":dd,"sesiones":dato_sesiones}) 
+        return render(request,'info.html',{"data":data,"dato_fecha":dd,"sesiones":dato_sesiones,"personal":data_personal}) 
 
 
 @csrf_exempt
