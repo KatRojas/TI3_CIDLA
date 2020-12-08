@@ -36,12 +36,12 @@ def info(request):
             SiNo = False
         else:
             inicio1 = inicio.split("-")
-            inicio2 = inicio1[2]+"/"+inicio1[1]+"/"+inicio1[0]
+            inicio2 = inicio1[0]+"-"+inicio1[1]+"-"+inicio1[2]
             fin1 = fin.split("-")
-            fin2 = fin1[2]+"/"+fin1[1]+"/"+fin1[0]
+            fin2 = fin1[0]+"-"+fin1[1]+"-"+fin1[2]
 
-            inicio3 = datetime.strptime(inicio2,'%d/%m/%Y')
-            fin3 = datetime.strptime(fin2,'%d/%m/%Y')
+            inicio3 = datetime.strptime(inicio2,'%Y-%m-%d')
+            fin3 = datetime.strptime(fin2,'%Y-%m-%d')
 
             client = MongoClient('localhost',27017)
             db = client.ti3
@@ -57,7 +57,7 @@ def info(request):
                 data_personal.append(x['ciudad'])
                 for y in range(len(x['sesiones_medica'])):
                     fec = x['sesiones_medica'][y]['fecha']
-                    if datetime.strptime(fec,'%d/%m/%Y') >= inicio3 and datetime.strptime(fec,'%d/%m/%Y') <= fin3:
+                    if datetime.strptime(fec,'%Y-%m-%d') >= inicio3 and datetime.strptime(fec,'%Y-%m-%d') <= fin3:
                         dato_sesiones.append([x["sesiones_medica"][y]])
                         ff = x['sesiones_medica'][y]['fecha']
                         if dd == '':
