@@ -10,27 +10,53 @@
     <title>Inicio</title>
 </head>
 <body>
-
-    <h1>Estamos en la pagina de inicio</h1>
-    Nombre del ramo: {{Ramo}}<br><!-- mostramos la variable Ramo-->
-    Fecha actual: {{fecha}}<!-- mostramos la variable fecha-->
-    <ul>
-        {% for i in lenguajes %} <!-- abrimos ciclo for para leer lista-->
-            {% if i == 'Python' %} <!-- colocamos un if-->
-                <li style="color: red;" >{{i}}</li> <!-- mostramos el elemento-->
-            {% else %}
-                <li>{{i}}</li> <!-- mostramos el elemento-->
-            {% endif %}
-        {% endfor %}<!-- cerramos ciclo for-->
-    </ul>
-    {# etiqueta para comentarios de una linea #}
-    
-    {% comment %}
-    Este es un
-    comentariosde mas de 1
-    linea
-    {% endcomment %}
+<div class="card-body">
+    <table class="table table-bordered table-striped" id="table1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Rut</th>
+                <th>Direccion</th>
+                <th>Fecha Nacimiento</th>
+                <th>Ciudad</th>
+                <th>Sesiones medicas</th>
+                <th>Graficos</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for cursor in cursor%}
+            <tr>
+                <td>{{cursor.nombre}}</td>
+                <td>{{cursor.apellidos}}</td>
+                <td>{{cursor.rut}}</td>
+                <td>{{cursor.direccion}}</td>
+                <td>{{cursor.fecha_nacimiento}}</td>
+                <td>{{cursor.ciudad}}</td>
+                <form method="POST" class="form-inline">
+                    {% csrf_token %}
+                    <input type="hidden" id="search" name="search" class="form-control"  value="{{cursor.rut}}">
+                    <td align="center">
+                        <button  type="submit" class="btn btn-primary" value="sesiones" name="sesiones" id="sesiones">Sesiones<span ></span> </button> 
+                    </td>
+                    <td align="center" >
+                        <button  type="submit" class="btn btn-info" value="graficos" name="graficos" id="graficos">Graficos<span ></span> </button>  
+                    </td>
+                </form> 
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+<script>
+    $(document).ready(function(){
+        $('#table1').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            }
+            });
+        });
+</script>
 </body>
 </html>
-
 {% endblock %}

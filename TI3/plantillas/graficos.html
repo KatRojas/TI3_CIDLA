@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archivos</title>
+</head>
+<body>
+<h1>Gráficos de {{na}}</h1>
+    <tbody>
+        <div class="card">         
+            <div class="card-header border-0">
+                <h4 class="card-title" id="add">Cantidad de Visitas a diferentes Hospitales</h4>
+            </div>
+            <div class="card-body">
+                <div class="position-relative mb-4">
+                    <canvas id="myChart" height="50"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="card">         
+            <div class="card-header border-0">
+                <h4 class="card-title" id="add">Cantidad de Visitas a Profesionales Médicos</h4>
+            </div>
+            <div class="card-body">
+                <div class="position-relative mb-4">
+                    <canvas id="myChart2" height="50"></canvas>
+                </div>
+            </div>
+        </div>
+        <input type="text" value="{{cursor}}" id="name">
+        <input type="text" value="{{pro}}" id="pro">
+
+    </tbody>
+    <script>
+        function data(names){
+            var cadena = ''
+            var contador = ''
+            for(i=0;i<names.length;i++){
+                cc = 1
+                inicio = names[i]
+                if (inicio != ''){
+                    for(x=i+1;x<names.length;x++){
+                        if(names[i] == names[x]){
+                            cc += 1
+                            names[x]=''
+                        }
+                    }
+                    cadena += inicio+","
+                    contador += cc.toString()+"," 
+                }
+            }
+            cadena = cadena.split(",")
+            contador= contador.split(",")
+            return [[cadena],[contador]]
+        }
+        var colores = function(){
+            var r = Math.floor(Math.random() * 255);
+            var g = Math.floor(Math.random() * 255);
+            var b = Math.floor(Math.random() * 255);
+            return "rgb(" + r + "," + g + "," + b + "," + 0.3 +")";
+        }
+        var name = $("#name").val();
+        var names = name.split(",")
+        var pro = $("#pro").val();
+        var pros = pro.split(",")
+        
+        G1 = data(names)
+        G2 = data(pros)
+            var ctx = document.getElementById('myChart').getContext('2d');
+
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: G1[0][0].filter(Boolean),
+                    datasets: [{
+                        label: '# Visitas',
+                        data: G1[1][0].filter(Boolean),
+                        backgroundColor: colores,
+                        borderColor: 'rgba(200, 200, 200, 0.75)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+            
+            var ctx = document.getElementById('myChart2').getContext('2d');
+
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: G2[0][0].filter(Boolean),
+                    datasets: [{
+                        label: '# Visitas',
+                        data:G2[1][0].filter(Boolean),
+                        backgroundColor: colores,
+                        borderColor: 'rgba(200, 200, 200, 0.75)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+    </script>
+</body>
+</html>
+
+{% endblock %}
