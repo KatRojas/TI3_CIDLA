@@ -58,6 +58,68 @@
             contador= contador.split(",")
             return [[cadena],[contador]]
         }
+        var colores = function(){
+            var r = Math.floor(Math.random() * 255);
+            var g = Math.floor(Math.random() * 255);
+            var b = Math.floor(Math.random() * 255);
+            return "rgb(" + r + "," + g + "," + b + "," + 0.3 +")";
+        }
+        var name = $("#name").val();
+        var names = name.split(",")
+        var pro = $("#pro").val();
+        var pros = pro.split(",")
+        
+        G1 = data(names)
+        G2 = data(pros)
+            var ctx = document.getElementById('myChart').getContext('2d');
+
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: G1[0][0].filter(Boolean),
+                    datasets: [{
+                        label: '# Visitas',
+                        data: G1[1][0].filter(Boolean),
+                        backgroundColor: colores,
+                        borderColor: 'rgba(200, 200, 200, 0.75)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+            
+            var ctx = document.getElementById('myChart2').getContext('2d');
+
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: G2[0][0].filter(Boolean),
+                    datasets: [{
+                        label: '# Visitas',
+                        data:G2[1][0].filter(Boolean),
+                        backgroundColor: colores,
+                        borderColor: 'rgba(200, 200, 200, 0.75)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
     </script>
 </body>
 </html>
