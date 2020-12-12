@@ -30,7 +30,17 @@ def inicio(request):  #Pasamos un objeto de tipo request como primer argumento
         elif request.POST.get('graficos'):
             search = request.POST['search']
             cursor = col.find({"rut":search})
-            return render(request,'graficos.html',{"cursor":cursor})
+            datos = ''
+            datospro = ''
+            na = ''
+            for x in cursor:
+                na = x['nombre'] + ' ' + x['apellidos']
+                for y in range(len(x['sesiones_medica'])):
+                    c =  x['sesiones_medica'][y]['centro_salud']
+                    m = x['sesiones_medica'][y]['nombre_profesional']
+                    datos += c+','
+                    datospro += m+','
+            return render(request,'graficos.html',{"na":na,"cursor":datos[:-1],"pro":datospro[:-1]})
 
     else:
         cursor = col.find({})
