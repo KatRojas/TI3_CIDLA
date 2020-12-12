@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesiones</title>
+</head>
+<body>
+<div class="card-body">
+    <table class="table table-bordered table-striped" id="table1">
+        <thead>
+            <tr>
+                <th>Nombre Sesion</th>
+                <th>Fecha</th>
+                <th>Nombre Profesional</th>
+                <th>Profesion</th>
+                <th>Centro salud</th>
+                <th>Arquetipos ¿array?</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for cursor in cursor%}
+            {%for sesiones in cursor.sesiones_medica%}
+            <tr>
+                <td>{{sesiones.nombre_sesion}}</td>
+                <td>{{sesiones.fecha}}</td>
+                <td>{{sesiones.nombre_profesional}}</td>
+                <td>{{sesiones.profesion}}</td>
+                <td>{{sesiones.centro_salud}}</td>
+                <td>arquetipos</td>
+            </tr>
+            {%endfor%}
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+<script>
+    $(document).ready(function(){
+        $('#table1').DataTable();
+    });
+
+</script>
+</body>
+</html>
+
+{% endblock %}
