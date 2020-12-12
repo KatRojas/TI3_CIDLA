@@ -40,9 +40,12 @@
 </div>
 <script>
     $(document).ready(function(){
-        $('#table1').DataTable();
-    });
-
+        $('#table1').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            }
+            });
+        });
 </script>
 </body>
 </html>
